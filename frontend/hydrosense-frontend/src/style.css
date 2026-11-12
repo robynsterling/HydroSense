@@ -1,11 +1,242 @@
+/* Original garden palette: light values intentionally remain unchanged. */
+:root {
+  color-scheme: light;
+  --color-364338: #364338;
+  --color-ece8d6: #ece8d6;
+  --color-eee9d6: #eee9d6;
+  --color-8b806d: #8b806d;
+  --color-faf5e5: #faf5e5;
+  --color-31473e: #31473e;
+  --color-c5c5a7: #c5c5a7;
+  --color-dfe9bc: #dfe9bc;
+  --color-374739: #374739;
+  --color-7e9166: #7e9166;
+  --color-d3a862: #d3a862;
+  --color-7b816e: #7b816e;
+  --color-7e806d: #7e806d;
+  --color-375242: #375242;
+  --color-f1e6c9: #f1e6c9;
+  --color-658861: #658861;
+  --color-7b976c: #7b976c;
+  --color-364b3b: #364b3b;
+  --color-8aa56e: #8aa56e;
+  --color-778170: #778170;
+  --color-56694e: #56694e;
+  --color-506249: #506249;
+  --color-fffbef: #fffbef;
+  --color-8b9c7b: #8b9c7b;
+  --color-37483e: #37483e;
+  --color-6d8c60: #6d8c60;
+  --color-ae7060: #ae7060;
+  --color-ac9454: #ac9454;
+  --color-b8c9a0: #b8c9a0;
+  --color-e2ebce: #e2ebce;
+  --color-5a7352: #5a7352;
+  --color-46684e: #46684e;
+  --color-2e4936: #2e4936;
+  --color-f9dfd5: #f9dfd5;
+  --color-cfa193: #cfa193;
+  --color-804f43: #804f43;
+  --color-fff9e9: #fff9e9;
+  --color-40564a: #40564a;
+  --color-9aa78d: #9aa78d;
+  --color-fff5d9: #fff5d9;
+  --color-465d44: #465d44;
+  --color-8a9f71: #8a9f71;
+  --color-9c524e: #9c524e;
+  --color-daebce: #daebce;
+  --color-deebcb: #deebcb;
+  --color-b6cea1: #b6cea1;
+  --color-8ba877: #8ba877;
+  --color-cbd8a9: #cbd8a9;
+  --color-ffffff27: #ffffff27;
+  --color-687e5870: #687e5870;
+  --color-f9e9a5: #f9e9a5;
+  --color-fff9e1: #fff9e1;
+  --color-f2f4d9: #f2f4d9;
+  --color-658d6b: #658d6b;
+  --color-5d7956: #5d7956;
+  --color-3e5747: #3e5747;
+  --color-eee7cd: #eee7cd;
+  --color-88bb7c: #88bb7c;
+  --color-76a76d: #76a76d;
+  --color-51684e: #51684e;
+  --color-f6f4e8: #f6f4e8;
+  --color-b7b9a1: #b7b9a1;
+  --color-7f9b6a: #7f9b6a;
+  --color-6f9d62: #6f9d62;
+  --color-a9ba79: #a9ba79;
+  --color-7b8c6e: #7b8c6e;
+  --color-fff9ed: #fff9ed;
+  --color-abb9a2: #abb9a2;
+  --color-d0cdb4: #d0cdb4;
+  --color-616d61: #616d61;
+  --color-f0e0be: #f0e0be;
+  --color-d39369: #d39369;
+  --color-ead2a5: #ead2a5;
+  --color-d8e9e5: #d8e9e5;
+  --color-b7d5cc: #b7d5cc;
+  --color-6095a1: #6095a1;
+  --color-f6e7c5: #f6e7c5;
+  --color-e9d5a8: #e9d5a8;
+  --color-d6a754: #d6a754;
+  --color-dfebcf: #dfebcf;
+  --color-bed5b2: #bed5b2;
+  --color-6e9d68: #6e9d68;
+  --color-344d3f: #344d3f;
+  --color-8e9082: #8e9082;
+  --color-84a276: #84a276;
+  --color-e5ead9: #e5ead9;
+  --color-ccd4be: #ccd4be;
+  --color-60715c: #60715c;
+  --color-83a875: #83a875;
+  --color-8d937e: #8d937e;
+  --color-879184: #879184;
+  --color-d8e4c5: #d8e4c5;
+  --color-9dae8c: #9dae8c;
+  --color-fff7dd: #fff7dd;
+  --color-87a17d: #87a17d;
+  --color-75946a: #75946a;
+  --color-536f4b: #536f4b;
+  --color-657a59: #657a59;
+  --color-809774: #809774;
+  --color-85927b: #85927b;
+  --color-536d55: #536d55;
+  --color-617b5540: #617b5540;
+  --color-e5edcf: #e5edcf;
+  --color-49664a: #49664a;
+  --color-627c5a: #627c5a;
+  --color-a6b697: #a6b697;
+  --color-d4e6b8: #d4e6b8;
+  --color-c5dda9: #c5dda9;
+  --color-dcd8c4: #dcd8c4;
+  --color-50734e: #50734e;
+  --color-fff7de: #fff7de;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-364338: hsl(129 11% 78%);
+  --color-ece8d6: #18241f;
+  --color-eee9d6: #18241f;
+  --color-8b806d: hsl(38 12% 72%);
+  --color-faf5e5: #202e26;
+  --color-31473e: hsl(155 18% 78%);
+  --color-c5c5a7: #101c15;
+  --color-dfe9bc: hsl(73 35% 19%);
+  --color-374739: hsl(128 13% 78%);
+  --color-7e9166: hsl(87 17% 72%);
+  --color-d3a862: hsl(37 35% 70%);
+  --color-7b816e: hsl(79 8% 73%);
+  --color-7e806d: hsl(66 8% 73%);
+  --color-375242: hsl(144 20% 77%);
+  --color-f1e6c9: hsl(44 35% 17%);
+  --color-658861: hsl(114 17% 73%);
+  --color-7b976c: hsl(99 17% 72%);
+  --color-364b3b: hsl(134 16% 77%);
+  --color-8aa56e: hsl(89 23% 71%);
+  --color-778170: hsl(95 7% 73%);
+  --color-56694e: hsl(102 15% 75%);
+  --color-506249: hsl(103 15% 76%);
+  --color-fffbef: #24342b;
+  --color-8b9c7b: hsl(91 14% 71%);
+  --color-37483e: hsl(145 13% 78%);
+  --color-6d8c60: hsl(102 19% 73%);
+  --color-ae7060: hsl(12 33% 71%);
+  --color-ac9454: hsl(44 35% 72%);
+  --color-b8c9a0: hsl(85 28% 67%);
+  --color-e2ebce: hsl(79 35% 17%);
+  --color-5a7352: hsl(105 17% 75%);
+  --color-46684e: hsl(134 20% 75%);
+  --color-2e4936: hsl(138 23% 78%);
+  --color-f9dfd5: hsl(17 35% 16%);
+  --color-cfa193: hsl(14 35% 68%);
+  --color-804f43: hsl(12 31% 75%);
+  --color-fff9e9: #24342b;
+  --color-40564a: hsl(147 15% 77%);
+  --color-9aa78d: #101c15;
+  --color-fff5d9: #2b3b2d;
+  --color-465d44: hsl(115 16% 76%);
+  --color-8a9f71: hsl(87 19% 71%);
+  --color-9c524e: hsl(3 33% 73%);
+  --color-daebce: #203b35;
+  --color-deebcb: #29433a;
+  --color-b6cea1: #405a3e;
+  --color-8ba877: #314c36;
+  --color-cbd8a9: #374f36;
+  --color-ffffff27: hsl(0 0% 13% / 0.15);
+  --color-687e5870: hsl(95 18% 74% / 0.44);
+  --color-f9e9a5: #dfcd89;
+  --color-fff9e1: #c9d7ba;
+  --color-f2f4d9: hsl(64 35% 16%);
+  --color-658d6b: hsl(129 17% 73%);
+  --color-5d7956: hsl(108 17% 74%);
+  --color-3e5747: hsl(142 17% 77%);
+  --color-eee7cd: hsl(47 35% 17%);
+  --color-88bb7c: hsl(109 32% 70%);
+  --color-76a76d: hsl(111 25% 71%);
+  --color-51684e: hsl(113 14% 75%);
+  --color-f6f4e8: #1d2c24;
+  --color-b7b9a1: hsl(65 15% 68%);
+  --color-7f9b6a: hsl(94 20% 72%);
+  --color-6f9d62: hsl(107 23% 72%);
+  --color-a9ba79: hsl(76 32% 70%);
+  --color-7b8c6e: hsl(94 12% 72%);
+  --color-fff9ed: #24342b;
+  --color-abb9a2: hsl(97 14% 68%);
+  --color-d0cdb4: #101c15;
+  --color-616d61: hsl(120 6% 74%);
+  --color-f0e0be: hsl(41 35% 18%);
+  --color-d39369: hsl(24 35% 69%);
+  --color-ead2a5: hsl(39 35% 20%);
+  --color-d8e9e5: hsl(166 28% 17%);
+  --color-b7d5cc: hsl(162 26% 20%);
+  --color-6095a1: hsl(191 26% 72%);
+  --color-f6e7c5: hsl(42 35% 17%);
+  --color-e9d5a8: hsl(42 35% 20%);
+  --color-d6a754: hsl(38 35% 70%);
+  --color-dfebcf: hsl(86 35% 17%);
+  --color-bed5b2: hsl(99 29% 20%);
+  --color-6e9d68: hsl(113 21% 72%);
+  --color-344d3f: hsl(146 19% 77%);
+  --color-8e9082: hsl(69 6% 71%);
+  --color-84a276: hsl(101 19% 71%);
+  --color-e5ead9: hsl(78 29% 17%);
+  --color-ccd4be: hsl(82 20% 20%);
+  --color-60715c: hsl(109 10% 74%);
+  --color-83a875: hsl(104 23% 71%);
+  --color-8d937e: hsl(77 9% 71%);
+  --color-879184: hsl(106 6% 71%);
+  --color-d8e4c5: hsl(83 35% 18%);
+  --color-9dae8c: hsl(90 17% 69%);
+  --color-fff7dd: hsl(46 35% 15%);
+  --color-87a17d: hsl(103 16% 71%);
+  --color-75946a: hsl(104 17% 72%);
+  --color-536f4b: hsl(107 19% 75%);
+  --color-657a59: hsl(98 16% 74%);
+  --color-809774: hsl(99 14% 71%);
+  --color-85927b: hsl(94 10% 71%);
+  --color-536d55: hsl(125 14% 75%);
+  --color-617b5540: hsl(101 18% 74% / 0.25);
+  --color-e5edcf: hsl(76 35% 17%);
+  --color-49664a: hsl(122 17% 75%);
+  --color-627c5a: hsl(106 16% 74%);
+  --color-a6b697: hsl(91 18% 69%);
+  --color-d4e6b8: hsl(83 35% 19%);
+  --color-c5dda9: hsl(88 35% 21%);
+  --color-dcd8c4: hsl(50 26% 19%);
+  --color-50734e: hsl(117 19% 75%);
+  --color-fff7de: hsl(45 35% 15%);
+}
+
 /* =========================================
    global stuff: fonts, colors, resets
    ========================================= */
 
 :root {
   font-family: 'DM Sans', sans-serif; /* main body font */
-  color: #364338; /* dark green-gray for text */
-  background: #ece8d6; /* cream background */
+  color: var(--color-364338); /* dark green-gray for text */
+  background: var(--color-ece8d6); /* cream background */
   font-synthesis: none; /* don't fake bold/italic if the font doesn't have it */
 }
 
@@ -33,7 +264,7 @@ button {
 .app {
   position: relative;
   min-height: 100vh;
-  background: #eee9d6;
+  background: var(--color-eee9d6);
   overflow: hidden;
 }
 
@@ -43,7 +274,7 @@ button {
   opacity: 0.14;
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(#8b806d 0.6px, transparent 0.6px);
+  background-image: radial-gradient(var(--color-8b806d) 0.6px, transparent 0.6px);
   background-size: 7px 7px;
 }
 
@@ -51,15 +282,15 @@ button {
 
 .topbar {
   position: relative;
-  background: #faf5e5;
-  border-bottom: 3px solid #31473e;
+  background: var(--color-faf5e5);
+  border-bottom: 3px solid var(--color-31473e);
   min-height: 91px;
   /* keeps content lined up with the main container even on wide screens */
   padding: 17px max(28px, calc((100vw - 1190px) / 2));
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 5px 0 #c5c5a7; /* hard shadow = the pixel-y look */
+  box-shadow: 0 5px 0 var(--color-c5c5a7); /* hard shadow = the pixel-y look */
 }
 
 /* logo + name on the left */
@@ -71,10 +302,10 @@ button {
 
 /* little square that holds the tiny sprout logo */
 .brand-symbol {
-  background: #dfe9bc;
-  border: 3px solid #374739;
+  background: var(--color-dfe9bc);
+  border: 3px solid var(--color-374739);
   border-radius: 10px;
-  box-shadow: 3px 3px 0 #7e9166;
+  box-shadow: 3px 3px 0 var(--color-7e9166);
   width: 52px;
   height: 52px;
   display: grid;
@@ -115,7 +346,7 @@ footer {
 
 /* the little star next to HYDROSENSE */
 .brand-name span {
-  color: #d3a862;
+  color: var(--color-d3a862);
   font-size: 15px;
 }
 
@@ -123,7 +354,7 @@ footer {
 .brand p {
   font-size: 12px;
   margin: 7px 0 0;
-  color: #7b816e;
+  color: var(--color-7b816e);
   letter-spacing: 0.05em;
 }
 
@@ -136,18 +367,18 @@ footer {
 
 .mini-tag {
   font-size: 9px;
-  color: #7e806d;
+  color: var(--color-7e806d);
 }
 
 .top-avatar {
-  border: 2px solid #375242;
+  border: 2px solid var(--color-375242);
   border-radius: 100%; /* circle */
   height: 39px;
   width: 39px;
-  background: #f1e6c9;
+  background: var(--color-f1e6c9);
   display: grid;
   place-items: center;
-  color: #658861;
+  color: var(--color-658861);
 }
 
 /* ---------- Layout / welcome ---------- */
@@ -172,7 +403,7 @@ footer {
 .section-kicker {
   font-size: 9px;
   line-height: 1.7;
-  color: #7b976c;
+  color: var(--color-7b976c);
   letter-spacing: 1px;
 }
 
@@ -181,19 +412,19 @@ footer {
   line-height: 1.2;
   letter-spacing: -1.7px; /* tightens up the big text */
   margin: 16px 0 8px;
-  color: #364b3b;
+  color: var(--color-364b3b);
 }
 
 /* "a story." in lighter green, no italics */
 .welcome h1 em {
   font-style: normal;
-  color: #8aa56e;
+  color: var(--color-8aa56e);
 }
 
 .welcome p {
   font-size: 15px;
   margin: 0;
-  color: #778170;
+  color: var(--color-778170);
 }
 
 /* the data source dropdown area (demo / bluetooth / api) */
@@ -207,36 +438,36 @@ footer {
 
 .mode-panel label {
   font-family: 'Press Start 2P', monospace;
-  color: #56694e;
+  color: var(--color-56694e);
   font-size: 9px;
 }
 
 .mode-panel select {
-  border: 2px solid #506249;
+  border: 2px solid var(--color-506249);
   border-radius: 5px;
-  background: #fffbef;
-  box-shadow: 3px 3px 0 #8b9c7b;
+  background: var(--color-fffbef);
+  box-shadow: 3px 3px 0 var(--color-8b9c7b);
   padding: 11px 12px;
   font-weight: 800;
-  color: #37483e;
+  color: var(--color-37483e);
   outline-offset: 3px; /* so the focus ring doesn't hug the border */
 }
 
 /* connection status text under the dropdown (green by default) */
 .live-status {
   font-size: 8px;
-  color: #6d8c60;
+  color: var(--color-6d8c60);
   margin-top: 8px;
 }
 
 /* red-ish when it's not connected */
 .live-status.offline {
-  color: #ae7060;
+  color: var(--color-ae7060);
 }
 
 /* yellow-ish while it's trying to connect */
 .live-status.connecting {
-  color: #ac9454;
+  color: var(--color-ac9454);
 }
 
 /* ---------- Notice / errors ---------- */
@@ -244,14 +475,14 @@ footer {
 /* the green info bar that explains which mode you're in */
 .notice {
   margin: 28px 0 21px;
-  border: 2px solid #b8c9a0;
-  background: #e2ebce;
+  border: 2px solid var(--color-b8c9a0);
+  background: var(--color-e2ebce);
   border-radius: 7px;
   padding: 13px 16px;
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #5a7352;
+  color: var(--color-5a7352);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -266,9 +497,9 @@ footer {
   display: flex;
   gap: 4px;
   align-items: center;
-  background: #46684e;
+  background: var(--color-46684e);
   color: white;
-  border: 2px solid #2e4936;
+  border: 2px solid var(--color-2e4936);
   border-radius: 5px;
   padding: 8px 10px;
   font-size: 12px;
@@ -279,11 +510,11 @@ footer {
 /* red error banner. negative top margin tucks it closer to the notice above */
 .error-msg {
   padding: 12px 15px;
-  background: #f9dfd5;
-  border: 2px solid #cfa193;
+  background: var(--color-f9dfd5);
+  border: 2px solid var(--color-cfa193);
   border-radius: 6px;
   margin: -11px 0 15px;
-  color: #804f43;
+  color: var(--color-804f43);
 }
 
 /* ---------- Dashboard / companion card ---------- */
@@ -297,9 +528,9 @@ footer {
 
 /* the main plant card (kind of like a trading card) */
 .companion-card {
-  background: #fff9e9;
-  border: 3px solid #40564a;
-  box-shadow: 6px 6px 0 #9aa78d;
+  background: var(--color-fff9e9);
+  border: 3px solid var(--color-40564a);
+  box-shadow: 6px 6px 0 var(--color-9aa78d);
   border-radius: 9px;
   overflow: hidden;
   align-self: start; /* so it doesn't stretch to match the right column's height */
@@ -311,23 +542,23 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding: 15px 17px;
-  background: #fff5d9;
+  background: var(--color-fff5d9);
   font-size: 10px;
-  color: #465d44;
+  color: var(--color-465d44);
   min-height: 51px;
 }
 
 /* "GRASS TYPE" next to the number */
 .companion-id span {
   font-size: 7px;
-  color: #8a9f71;
+  color: var(--color-8a9f71);
   margin-left: 7px;
 }
 
 .heart-row {
   display: flex;
   gap: 5px;
-  color: #9c524e;
+  color: var(--color-9c524e);
 }
 
 /* the scene where the plant lives. sky on top, then hard-edged
@@ -337,13 +568,13 @@ footer {
   position: relative;
   overflow: hidden;
   background: linear-gradient(
-    #daebce 0%,
-    #deebcb 65%,
-    #b6cea1 65%,
-    #b6cea1 70%,
-    #8ba877 70%,
-    #8ba877 73%,
-    #cbd8a9 73%
+    var(--color-daebce) 0%,
+    var(--color-deebcb) 65%,
+    var(--color-b6cea1) 65%,
+    var(--color-b6cea1) 70%,
+    var(--color-8ba877) 70%,
+    var(--color-8ba877) 73%,
+    var(--color-cbd8a9) 73%
   );
   display: flex;
   align-items: center;
@@ -356,8 +587,8 @@ footer {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, transparent 95%, #ffffff27 95%),
-    linear-gradient(transparent 95%, #ffffff27 95%);
+    linear-gradient(90deg, transparent 95%, var(--color-ffffff27) 95%),
+    linear-gradient(transparent 95%, var(--color-ffffff27) 95%);
   background-size: 17px 17px;
   opacity: 0.5;
 }
@@ -368,7 +599,7 @@ footer {
   width: 244px;
   height: 244px;
   z-index: 2;
-  filter: drop-shadow(6px 7px 0 #687e5870);
+  filter: drop-shadow(6px 7px 0 var(--color-687e5870));
   transform: translateY(6px);
 }
 
@@ -378,12 +609,12 @@ footer {
   top: 34px;
   right: 39px;
   font-size: 47px;
-  color: #f9e9a5;
+  color: var(--color-f9e9a5);
 }
 
 .stage-star {
   position: absolute;
-  color: #fff9e1;
+  color: var(--color-fff9e1);
   font-size: 22px;
   z-index: 1;
 }
@@ -404,7 +635,7 @@ footer {
   border-radius: 5px;
   width: 62px;
   height: 15px;
-  background: #f2f4d9;
+  background: var(--color-f2f4d9);
   opacity: 0.7;
 }
 
@@ -422,7 +653,7 @@ footer {
 .stage-grass {
   position: absolute;
   bottom: 15px;
-  color: #658d6b;
+  color: var(--color-658d6b);
   font-size: 22px;
   letter-spacing: 7px;
   white-space: nowrap;
@@ -449,7 +680,7 @@ footer {
 
 .level {
   font-size: 9px;
-  color: #5d7956;
+  color: var(--color-5d7956);
   white-space: nowrap;
 }
 
@@ -469,8 +700,8 @@ footer {
 /* empty bar track */
 .hp-track {
   height: 16px;
-  border: 2px solid #3e5747;
-  background: #eee7cd;
+  border: 2px solid var(--color-3e5747);
+  background: var(--color-eee7cd);
   flex: 1;
   border-radius: 2px;
   overflow: hidden;
@@ -483,8 +714,8 @@ footer {
   height: 100%;
   background: repeating-linear-gradient(
     90deg,
-    #88bb7c 0 11px,
-    #76a76d 11px 14px
+    var(--color-88bb7c) 0 11px,
+    var(--color-76a76d) 11px 14px
   );
   transition: width 0.35s; /* smooth fill when the value changes */
 }
@@ -498,10 +729,10 @@ footer {
 
 /* dialogue box, like in an old RPG */
 .message-box {
-  border: 2px solid #51684e;
+  border: 2px solid var(--color-51684e);
   border-radius: 4px;
-  background: #f6f4e8;
-  box-shadow: 3px 3px 0 #b7b9a1;
+  background: var(--color-f6f4e8);
+  box-shadow: 3px 3px 0 var(--color-b7b9a1);
   display: flex;
   gap: 9px;
   margin-top: 20px;
@@ -519,14 +750,14 @@ footer {
 
 .message-star {
   font-size: 12px;
-  color: #7f9b6a;
+  color: var(--color-7f9b6a);
   line-height: 1.7;
 }
 
 /* the little ▼ in the corner of the dialogue box */
 .cursor {
   font-size: 12px;
-  color: #6f9d62;
+  color: var(--color-6f9d62);
   align-self: flex-end;
 }
 
@@ -555,13 +786,13 @@ footer {
 
 /* the little flower after the heading */
 .panel-heading h2 span {
-  color: #a9ba79;
+  color: var(--color-a9ba79);
 }
 
 .update-label {
   font-size: 7px;
   white-space: nowrap;
-  color: #7b8c6e;
+  color: var(--color-7b8c6e);
   line-height: 1.7;
 }
 
@@ -573,11 +804,11 @@ footer {
 }
 
 .metric-card {
-  background: #fff9ed;
-  border: 2px solid #abb9a2;
+  background: var(--color-fff9ed);
+  border: 2px solid var(--color-abb9a2);
   border-radius: 7px;
   padding: 20px 20px 18px;
-  box-shadow: 4px 4px 0 #d0cdb4;
+  box-shadow: 4px 4px 0 var(--color-d0cdb4);
   min-height: 161px;
 }
 
@@ -585,7 +816,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #616d61;
+  color: var(--color-616d61);
   font-size: 9px;
   white-space: nowrap;
 }
@@ -596,36 +827,36 @@ footer {
   width: 42px;
   display: grid;
   place-items: center;
-  background: #f0e0be;
-  color: #d39369;
-  border: 2px solid #ead2a5;
+  background: var(--color-f0e0be);
+  color: var(--color-d39369);
+  border: 2px solid var(--color-ead2a5);
   border-radius: 5px;
 }
 
 /* each metric gets its own color so they're easy to tell apart */
 .metric-icon.humidity {
-  background: #d8e9e5;
-  border-color: #b7d5cc;
-  color: #6095a1; /* blue-ish */
+  background: var(--color-d8e9e5);
+  border-color: var(--color-b7d5cc);
+  color: var(--color-6095a1); /* blue-ish */
 }
 
 .metric-icon.feels {
-  background: #f6e7c5;
-  border-color: #e9d5a8;
-  color: #d6a754; /* yellow */
+  background: var(--color-f6e7c5);
+  border-color: var(--color-e9d5a8);
+  color: var(--color-d6a754); /* yellow */
 }
 
 .metric-icon.soil {
-  background: #dfebcf;
-  border-color: #bed5b2;
-  color: #6e9d68; /* green */
+  background: var(--color-dfebcf);
+  border-color: var(--color-bed5b2);
+  color: var(--color-6e9d68); /* green */
 }
 
 /* the big number */
 .metric-reading {
   font-size: 39px;
   font-weight: 800;
-  color: #344d3f;
+  color: var(--color-344d3f);
   letter-spacing: -1.9px;
   margin-top: 13px;
   line-height: 1.1;
@@ -640,7 +871,7 @@ footer {
 
 .metric-desc {
   font-size: 12px;
-  color: #8e9082;
+  color: var(--color-8e9082);
   margin-top: 8px;
 }
 
@@ -648,10 +879,10 @@ footer {
 
 /* box around the temperature graph */
 .chart-panel {
-  background: #fff9ed;
-  border: 2px solid #abb9a2;
+  background: var(--color-fff9ed);
+  border: 2px solid var(--color-abb9a2);
   border-radius: 7px;
-  box-shadow: 4px 4px 0 #d0cdb4;
+  box-shadow: 4px 4px 0 var(--color-d0cdb4);
   margin-top: 15px;
   padding: 22px 22px 14px;
 }
@@ -665,7 +896,7 @@ footer {
 
 .tiny-kicker {
   font-size: 8px;
-  color: #84a276;
+  color: var(--color-84a276);
 }
 
 .chart-top h3 {
@@ -676,12 +907,12 @@ footer {
 
 /* "RECENT READINGS" pill */
 .chart-chip {
-  background: #e5ead9;
-  border: 1px solid #ccd4be;
+  background: var(--color-e5ead9);
+  border: 1px solid var(--color-ccd4be);
   border-radius: 4px;
   padding: 9px;
   font-size: 7px;
-  color: #60715c;
+  color: var(--color-60715c);
   white-space: nowrap;
 }
 
@@ -691,7 +922,7 @@ footer {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #83a875;
+  background: var(--color-83a875);
   margin-right: 5px;
 }
 
@@ -708,7 +939,7 @@ footer {
   height: 130px;
   display: grid;
   place-items: center;
-  color: #8d937e;
+  color: var(--color-8d937e);
 }
 
 /* EARLIER ... NOW → under the graph */
@@ -716,7 +947,7 @@ footer {
   display: flex;
   justify-content: space-between;
   font-size: 7px;
-  color: #879184;
+  color: var(--color-879184);
   margin-top: 1px;
 }
 
@@ -727,37 +958,37 @@ footer {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: #d8e4c5;
-  border: 2px dashed #9dae8c;
+  background: var(--color-d8e4c5);
+  border: 2px dashed var(--color-9dae8c);
   padding: 17px 22px;
   margin: 31px 0 27px;
   border-radius: 7px;
 }
 
 .tip-icon {
-  background: #fff7dd;
-  border: 2px solid #87a17d;
+  background: var(--color-fff7dd);
+  border: 2px solid var(--color-87a17d);
   border-radius: 5px;
   font-size: 21px;
   padding: 13px;
-  color: #75946a;
+  color: var(--color-75946a);
 }
 
 .bottom-strip strong {
   font-size: 9px;
-  color: #536f4b;
+  color: var(--color-536f4b);
 }
 
 .bottom-strip p {
   font-size: 13px;
   margin: 7px 0 0;
-  color: #657a59;
+  color: var(--color-657a59);
 }
 
 /* "KEEP GROWING" gets pushed all the way to the right with margin-left: auto */
 .bottom-strip > span {
   font-size: 8px;
-  color: #809774;
+  color: var(--color-809774);
   margin-left: auto;
   white-space: nowrap;
   font-family: 'Press Start 2P', monospace;
@@ -766,7 +997,7 @@ footer {
 footer {
   margin-top: 40px;
   text-align: center;
-  color: #85927b;
+  color: var(--color-85927b);
   font-size: 7px;
   line-height: 2.6; /* extra line height since the pixel font is so tiny */
   padding: 3px 0 17px;
@@ -778,7 +1009,7 @@ footer span {
 }
 
 footer strong {
-  color: #536d55;
+  color: var(--color-536d55);
 }
 
 /* ---------- Responsive ---------- */
@@ -937,7 +1168,7 @@ footer strong {
   object-position: center;
 
   margin: 0 auto;
-  filter: drop-shadow(4px 6px 3px #617b5540);
+  filter: drop-shadow(4px 6px 3px var(--color-617b5540));
 
   animation: sproutFloat 3s ease-in-out infinite;
 }
@@ -956,13 +1187,15 @@ footer strong {
 
 /* Small HydroSense header logo */
 .brand-symbol {
-  width: 78px;
-  height: 78px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  overflow: visible;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  padding: 6px;
+  background: color-mix(in srgb, var(--color-faf5e5) 75%, var(--color-dfe9bc));
+  border: 2px solid color-mix(in srgb, var(--color-faf5e5) 45%, var(--color-374739));
+  box-shadow: 1px 2px 0 var(--color-9aa78d);
+  border-radius: 5px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -972,32 +1205,32 @@ footer strong {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  image-rendering: pixelated;
   display: block;
 }
 
-
 /* HydroSense music button */
 .music-toggle {
-  background: #e5edcf;
-  color: #49664a;
-  border: 2px solid #627c5a;
+  background: var(--color-e5edcf);
+  color: var(--color-49664a);
+  border: 2px solid var(--color-627c5a);
   border-radius: 9px;
   padding: 12px 15px;
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
-  box-shadow: 3px 3px 0 #a6b697;
+  box-shadow: 3px 3px 0 var(--color-a6b697);
   cursor: pointer;
   white-space: nowrap;
   transition: transform 0.15s;
 }
 
 .music-toggle:hover {
-  background: #d4e6b8;
+  background: var(--color-d4e6b8);
   transform: translateY(-2px);
 }
 
 .music-toggle[aria-pressed="true"] {
-  background: #c5dda9;
+  background: var(--color-c5dda9);
 }
 
 @media (max-width: 760px) {
@@ -1005,4 +1238,87 @@ footer strong {
     font-size: 8px;
     padding: 10px;
   }
+}
+
+/* Settings uses the same garden palette and hard-edged shadows as the dashboard. */
+.topbar { z-index: 3; }
+.top-avatar {
+  position: relative;
+  flex-shrink: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+.settings-tooltip {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 8px);
+  right: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--color-abb9a2);
+  border-radius: 5px;
+  background: var(--color-fff9e9);
+  box-shadow: 2px 2px 0 var(--color-9aa78d);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.5;
+  color: var(--color-364338);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease, visibility 150ms ease;
+}
+.settings-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  inset-inline: 0;
+  height: 10px;
+}
+.top-avatar:focus-visible:not([data-tooltip-hidden="true"]) .settings-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+@media (hover: hover) {
+  .top-avatar:hover { background: var(--color-dfe9bc); box-shadow: 0 0 0 3px var(--color-b8c9a0); }
+  .top-avatar:hover:not([data-tooltip-hidden="true"]) .settings-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .top-avatar, .settings-tooltip { transition: none; }
+}
+button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid var(--color-50734e);
+  outline-offset: 4px;
+}
+.settings-panel {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 24px;
+  color: var(--color-364338);
+  background: var(--color-fff9e9);
+  border: 3px solid var(--color-40564a);
+  border-radius: 9px;
+  box-shadow: 6px 6px 0 var(--color-9aa78d);
+}
+.settings-panel::backdrop { background: rgb(12 23 16 / 65%); }
+.settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.settings-heading h2 { font-family: 'Press Start 2P', monospace; font-size: 16px; line-height: 1.6; margin: 0; }
+.settings-close {
+  display: grid; place-items: center; min-width: 44px; min-height: 44px;
+  background: var(--color-e5ead9); color: inherit;
+  border: 2px solid var(--color-506249); border-radius: 5px;
+}
+.settings-panel p { font-size: 14px; line-height: 1.6; }
+.theme-options { margin: 24px 0 16px; padding: 16px; border: 2px solid var(--color-abb9a2); border-radius: 5px; }
+.theme-options legend { font-weight: 800; padding: 0 8px; }
+.theme-options label { display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; }
+.theme-options input { width: 20px; height: 20px; accent-color: var(--color-50734e); }
+.settings-note { margin-bottom: 0; }
+@media (max-width: 580px) {
+  .topbar { flex-wrap: wrap; gap: 12px; }
+  .top-right { margin-left: auto; gap: 12px; }
 }
