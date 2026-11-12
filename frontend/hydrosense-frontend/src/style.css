@@ -1,0 +1,1008 @@
+/* =========================================
+   global stuff: fonts, colors, resets
+   ========================================= */
+
+:root {
+  font-family: 'DM Sans', sans-serif; /* main body font */
+  color: #364338; /* dark green-gray for text */
+  background: #ece8d6; /* cream background */
+  font-synthesis: none; /* don't fake bold/italic if the font doesn't have it */
+}
+
+/* makes padding/borders count inside the width so sizing isn't a headache */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px; /* so it doesn't fall apart on tiny screens */
+}
+
+/* buttons and selects should use the page font, not the browser default */
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* the whole app wrapper */
+.app {
+  position: relative;
+  min-height: 100vh;
+  background: #eee9d6;
+  overflow: hidden;
+}
+
+/* faint dotted texture over everything, gives it a paper feel */
+.grain {
+  pointer-events: none; /* so it never blocks clicks */
+  opacity: 0.14;
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#8b806d 0.6px, transparent 0.6px);
+  background-size: 7px 7px;
+}
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: relative;
+  background: #faf5e5;
+  border-bottom: 3px solid #31473e;
+  min-height: 91px;
+  /* keeps content lined up with the main container even on wide screens */
+  padding: 17px max(28px, calc((100vw - 1190px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 0 #c5c5a7; /* hard shadow = the pixel-y look */
+}
+
+/* logo + name on the left */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+/* little square that holds the tiny sprout logo */
+.brand-symbol {
+  background: #dfe9bc;
+  border: 3px solid #374739;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 #7e9166;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* the sprout SVG inside the logo box, nudged down so it sits right */
+.sprout-tiny {
+  width: 60px;
+  height: 60px;
+  transform: translateY(5px);
+}
+
+/* everything that gets the retro pixel font.
+   if something looks off, check if it belongs in this list */
+.brand-name,
+.section-kicker,
+.mini-tag,
+.live-status,
+.card-top,
+.level,
+.health-line,
+.update-label,
+.metric-heading,
+.tiny-kicker,
+.chart-chip,
+.chart-bottom,
+.message-star,
+footer {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.brand-name {
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+/* the little star next to HYDROSENSE */
+.brand-name span {
+  color: #d3a862;
+  font-size: 15px;
+}
+
+/* "your plant companion" tagline */
+.brand p {
+  font-size: 12px;
+  margin: 7px 0 0;
+  color: #7b816e;
+  letter-spacing: 0.05em;
+}
+
+/* field guide tag + avatar on the right */
+.top-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.mini-tag {
+  font-size: 9px;
+  color: #7e806d;
+}
+
+.top-avatar {
+  border: 2px solid #375242;
+  border-radius: 100%; /* circle */
+  height: 39px;
+  width: 39px;
+  background: #f1e6c9;
+  display: grid;
+  place-items: center;
+  color: #658861;
+}
+
+/* ---------- Layout / welcome ---------- */
+
+/* centers all the main content and caps the width */
+.container {
+  position: relative;
+  max-width: 1190px;
+  margin: auto;
+  padding: 43px 28px 32px;
+}
+
+/* headline on the left, data source picker on the right */
+.welcome {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* tiny label above headings, like "THE LITTLE GREENHOUSE" */
+.section-kicker {
+  font-size: 9px;
+  line-height: 1.7;
+  color: #7b976c;
+  letter-spacing: 1px;
+}
+
+.welcome h1 {
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -1.7px; /* tightens up the big text */
+  margin: 16px 0 8px;
+  color: #364b3b;
+}
+
+/* "a story." in lighter green, no italics */
+.welcome h1 em {
+  font-style: normal;
+  color: #8aa56e;
+}
+
+.welcome p {
+  font-size: 15px;
+  margin: 0;
+  color: #778170;
+}
+
+/* the data source dropdown area (demo / bluetooth / api) */
+.mode-panel {
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0 0 2px;
+}
+
+.mode-panel label {
+  font-family: 'Press Start 2P', monospace;
+  color: #56694e;
+  font-size: 9px;
+}
+
+.mode-panel select {
+  border: 2px solid #506249;
+  border-radius: 5px;
+  background: #fffbef;
+  box-shadow: 3px 3px 0 #8b9c7b;
+  padding: 11px 12px;
+  font-weight: 800;
+  color: #37483e;
+  outline-offset: 3px; /* so the focus ring doesn't hug the border */
+}
+
+/* connection status text under the dropdown (green by default) */
+.live-status {
+  font-size: 8px;
+  color: #6d8c60;
+  margin-top: 8px;
+}
+
+/* red-ish when it's not connected */
+.live-status.offline {
+  color: #ae7060;
+}
+
+/* yellow-ish while it's trying to connect */
+.live-status.connecting {
+  color: #ac9454;
+}
+
+/* ---------- Notice / errors ---------- */
+
+/* the green info bar that explains which mode you're in */
+.notice {
+  margin: 28px 0 21px;
+  border: 2px solid #b8c9a0;
+  background: #e2ebce;
+  border-radius: 7px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #5a7352;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* lets the message text take up the leftover space so the button stays on the right */
+.notice > span {
+  flex: 1;
+}
+
+/* Connect BLE / Retry button */
+.notice-btn {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  background: #46684e;
+  color: white;
+  border: 2px solid #2e4936;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* red error banner. negative top margin tucks it closer to the notice above */
+.error-msg {
+  padding: 12px 15px;
+  background: #f9dfd5;
+  border: 2px solid #cfa193;
+  border-radius: 6px;
+  margin: -11px 0 15px;
+  color: #804f43;
+}
+
+/* ---------- Dashboard / companion card ---------- */
+
+/* two columns: plant card on the left, readings on the right */
+.dashboard {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 24px;
+}
+
+/* the main plant card (kind of like a trading card) */
+.companion-card {
+  background: #fff9e9;
+  border: 3px solid #40564a;
+  box-shadow: 6px 6px 0 #9aa78d;
+  border-radius: 9px;
+  overflow: hidden;
+  align-self: start; /* so it doesn't stretch to match the right column's height */
+}
+
+/* top strip of the card: number + hearts */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 17px;
+  background: #fff5d9;
+  font-size: 10px;
+  color: #465d44;
+  min-height: 51px;
+}
+
+/* "GRASS TYPE" next to the number */
+.companion-id span {
+  font-size: 7px;
+  color: #8a9f71;
+  margin-left: 7px;
+}
+
+.heart-row {
+  display: flex;
+  gap: 5px;
+  color: #9c524e;
+}
+
+/* the scene where the plant lives. sky on top, then hard-edged
+   stripes of grass at the bottom for the pixel-art look */
+.stage {
+  height: 287px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    #daebce 0%,
+    #deebcb 65%,
+    #b6cea1 65%,
+    #b6cea1 70%,
+    #8ba877 70%,
+    #8ba877 73%,
+    #cbd8a9 73%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* faint grid lines over the scene, like graph paper */
+.stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, transparent 95%, #ffffff27 95%),
+    linear-gradient(transparent 95%, #ffffff27 95%);
+  background-size: 17px 17px;
+  opacity: 0.5;
+}
+
+/* old SVG plant sizing. I'm using PNGs on the stage now,
+   so this probably isn't doing anything anymore */
+.stage .sprout-large {
+  width: 244px;
+  height: 244px;
+  z-index: 2;
+  filter: drop-shadow(6px 7px 0 #687e5870);
+  transform: translateY(6px);
+}
+
+/* decorations in the scene: sun, stars, clouds, grass */
+.stage-sun {
+  position: absolute;
+  top: 34px;
+  right: 39px;
+  font-size: 47px;
+  color: #f9e9a5;
+}
+
+.stage-star {
+  position: absolute;
+  color: #fff9e1;
+  font-size: 22px;
+  z-index: 1;
+}
+
+/* each star gets its own spot */
+.star-a {
+  top: 54px;
+  left: 35px;
+}
+
+.star-b {
+  top: 96px;
+  right: 45px;
+}
+
+.stage-cloud {
+  position: absolute;
+  border-radius: 5px;
+  width: 62px;
+  height: 15px;
+  background: #f2f4d9;
+  opacity: 0.7;
+}
+
+.cloud-a {
+  top: 60px;
+  left: 75px;
+}
+
+.cloud-b {
+  top: 100px;
+  right: 12px;
+  width: 40px; /* smaller than cloud-a so they don't look identical */
+}
+
+.stage-grass {
+  position: absolute;
+  bottom: 15px;
+  color: #658d6b;
+  font-size: 22px;
+  letter-spacing: 7px;
+  white-space: nowrap;
+}
+
+/* bottom half of the card: name, HP bar, message */
+.companion-body {
+  padding: 20px 21px 20px;
+}
+
+/* plant name on the left, level on the right */
+.friend-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.friend-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.level {
+  font-size: 9px;
+  color: #5d7956;
+  white-space: nowrap;
+}
+
+/* the SOIL HP row: label, bar, percent */
+.health-line {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin-top: 17px;
+}
+
+.health-line > span {
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+/* empty bar track */
+.hp-track {
+  height: 16px;
+  border: 2px solid #3e5747;
+  background: #eee7cd;
+  flex: 1;
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 2px;
+}
+
+/* the filled part. width is set in React from the soil moisture value.
+   the repeating gradient makes it look segmented like a game HP bar */
+.hp-track > div {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #88bb7c 0 11px,
+    #76a76d 11px 14px
+  );
+  transition: width 0.35s; /* smooth fill when the value changes */
+}
+
+/* fixed min-width so the bar doesn't jump around when the number changes */
+.health-line strong {
+  font-size: 12px;
+  min-width: 35px;
+  text-align: right;
+}
+
+/* dialogue box, like in an old RPG */
+.message-box {
+  border: 2px solid #51684e;
+  border-radius: 4px;
+  background: #f6f4e8;
+  box-shadow: 3px 3px 0 #b7b9a1;
+  display: flex;
+  gap: 9px;
+  margin-top: 20px;
+  padding: 13px 11px;
+  min-height: 63px;
+  align-items: flex-start;
+}
+
+.message-box p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.message-star {
+  font-size: 12px;
+  color: #7f9b6a;
+  line-height: 1.7;
+}
+
+/* the little ▼ in the corner of the dialogue box */
+.cursor {
+  font-size: 12px;
+  color: #6f9d62;
+  align-self: flex-end;
+}
+
+/* ---------- Readings ---------- */
+
+/* min-width: 0 stops the grid column from overflowing on small screens */
+.readings {
+  min-width: 0;
+}
+
+/* "Current conditions" heading + the updated time */
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: end;
+  min-height: 68px;
+  margin-bottom: 16px;
+}
+
+.panel-heading h2 {
+  font-size: 26px;
+  margin: 9px 0 0;
+  letter-spacing: -0.7px;
+}
+
+/* the little flower after the heading */
+.panel-heading h2 span {
+  color: #a9ba79;
+}
+
+.update-label {
+  font-size: 7px;
+  white-space: nowrap;
+  color: #7b8c6e;
+  line-height: 1.7;
+}
+
+/* 2x2 grid of sensor cards */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.metric-card {
+  background: #fff9ed;
+  border: 2px solid #abb9a2;
+  border-radius: 7px;
+  padding: 20px 20px 18px;
+  box-shadow: 4px 4px 0 #d0cdb4;
+  min-height: 161px;
+}
+
+.metric-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #616d61;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+/* icon box. the default colors here are the temperature (orange) ones */
+.metric-icon {
+  height: 42px;
+  width: 42px;
+  display: grid;
+  place-items: center;
+  background: #f0e0be;
+  color: #d39369;
+  border: 2px solid #ead2a5;
+  border-radius: 5px;
+}
+
+/* each metric gets its own color so they're easy to tell apart */
+.metric-icon.humidity {
+  background: #d8e9e5;
+  border-color: #b7d5cc;
+  color: #6095a1; /* blue-ish */
+}
+
+.metric-icon.feels {
+  background: #f6e7c5;
+  border-color: #e9d5a8;
+  color: #d6a754; /* yellow */
+}
+
+.metric-icon.soil {
+  background: #dfebcf;
+  border-color: #bed5b2;
+  color: #6e9d68; /* green */
+}
+
+/* the big number */
+.metric-reading {
+  font-size: 39px;
+  font-weight: 800;
+  color: #344d3f;
+  letter-spacing: -1.9px;
+  margin-top: 13px;
+  line-height: 1.1;
+}
+
+/* the unit (°C, %, °F) stays smaller than the number */
+.metric-reading small {
+  font-size: 19px;
+  letter-spacing: -0.5px;
+  margin-left: 4px;
+}
+
+.metric-desc {
+  font-size: 12px;
+  color: #8e9082;
+  margin-top: 8px;
+}
+
+/* ---------- Chart ---------- */
+
+/* box around the temperature graph */
+.chart-panel {
+  background: #fff9ed;
+  border: 2px solid #abb9a2;
+  border-radius: 7px;
+  box-shadow: 4px 4px 0 #d0cdb4;
+  margin-top: 15px;
+  padding: 22px 22px 14px;
+}
+
+.chart-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.tiny-kicker {
+  font-size: 8px;
+  color: #84a276;
+}
+
+.chart-top h3 {
+  font-size: 19px;
+  margin: 11px 0 0;
+  letter-spacing: -0.4px;
+}
+
+/* "RECENT READINGS" pill */
+.chart-chip {
+  background: #e5ead9;
+  border: 1px solid #ccd4be;
+  border-radius: 4px;
+  padding: 9px;
+  font-size: 7px;
+  color: #60715c;
+  white-space: nowrap;
+}
+
+/* green dot inside the pill */
+.chart-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #83a875;
+  margin-right: 5px;
+}
+
+/* the SVG graph. overflow: visible so the dots don't get clipped at the edges */
+.chart {
+  width: 100%;
+  height: 130px;
+  margin-top: 13px;
+  overflow: visible;
+}
+
+/* what shows up before there's enough data to draw a line */
+.empty-chart {
+  height: 130px;
+  display: grid;
+  place-items: center;
+  color: #8d937e;
+}
+
+/* EARLIER ... NOW → under the graph */
+.chart-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7px;
+  color: #879184;
+  margin-top: 1px;
+}
+
+/* ---------- Bottom strip / footer ---------- */
+
+/* the dashed tip bar near the bottom */
+.bottom-strip {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #d8e4c5;
+  border: 2px dashed #9dae8c;
+  padding: 17px 22px;
+  margin: 31px 0 27px;
+  border-radius: 7px;
+}
+
+.tip-icon {
+  background: #fff7dd;
+  border: 2px solid #87a17d;
+  border-radius: 5px;
+  font-size: 21px;
+  padding: 13px;
+  color: #75946a;
+}
+
+.bottom-strip strong {
+  font-size: 9px;
+  color: #536f4b;
+}
+
+.bottom-strip p {
+  font-size: 13px;
+  margin: 7px 0 0;
+  color: #657a59;
+}
+
+/* "KEEP GROWING" gets pushed all the way to the right with margin-left: auto */
+.bottom-strip > span {
+  font-size: 8px;
+  color: #809774;
+  margin-left: auto;
+  white-space: nowrap;
+  font-family: 'Press Start 2P', monospace;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #85927b;
+  font-size: 7px;
+  line-height: 2.6; /* extra line height since the pixel font is so tiny */
+  padding: 3px 0 17px;
+}
+
+/* spacing around the little dots between footer items */
+footer span {
+  margin: 0 6px;
+}
+
+footer strong {
+  color: #536d55;
+}
+
+/* ---------- Responsive ---------- */
+
+/* tablet-ish: shrink the left column and tighten the cards */
+@media (max-width: 1000px) {
+  .dashboard {
+    grid-template-columns: 340px minmax(0, 1fr);
+  }
+
+  .metric-heading {
+    font-size: 7px;
+  }
+
+  .metric-card {
+    padding: 15px;
+  }
+
+  .metric-reading {
+    font-size: 31px;
+  }
+
+  /* hide "GRASS TYPE", not enough room */
+  .companion-id span {
+    display: none;
+  }
+
+  /* stack the heading and the updated time */
+  .panel-heading {
+    display: block;
+  }
+
+  .update-label {
+    display: block;
+    margin-top: 9px;
+  }
+
+  .friend-name {
+    font-size: 18px;
+  }
+}
+
+/* phones: everything goes into one column */
+@media (max-width: 760px) {
+  .topbar {
+    padding: 15px 20px;
+  }
+
+  .mini-tag {
+    display: none;
+  }
+
+  .container {
+    padding: 30px 19px;
+  }
+
+  /* stack the welcome text on top of the dropdown */
+  .welcome {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .welcome h1 {
+    font-size: 32px;
+  }
+
+  .mode-panel {
+    max-width: 360px;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  /* center the plant card so it doesn't stretch super wide */
+  .companion-card {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .stage {
+    height: 250px;
+  }
+
+  .stage .sprout-large {
+    width: 225px;
+    height: 225px;
+  }
+
+  .readings {
+    margin-top: 18px;
+  }
+
+  .bottom-strip > span {
+    display: none;
+  }
+
+  .panel-heading {
+    min-height: auto;
+  }
+
+  .metrics {
+    gap: 12px;
+  }
+}
+
+/* small phones: metric cards go one per row */
+@media (max-width: 400px) {
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-name {
+    font-size: 15px;
+  }
+
+  .metric-heading {
+    font-size: 9px;
+  }
+
+  .chart-chip {
+    display: none;
+  }
+
+  /* let the notice wrap so the button drops below the text */
+  .notice {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .bottom-strip {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .bottom-strip p {
+    line-height: 1.5;
+  }
+}
+
+/* ---------- Custom plant character ---------- */
+
+/* the PNG plant that swaps between happy and thirsty.
+   it floats up and down so it feels alive */
+.stage .sprout-character {
+  display: block;
+  position: relative;
+  z-index: 2; /* keeps it above the clouds and stars */
+
+  width: 210px;
+  height: 240px;
+  max-width: 85%; /* shrinks a bit on narrow screens */
+
+  object-fit: contain; /* don't squish the image */
+  object-position: center;
+
+  margin: 0 auto;
+  filter: drop-shadow(4px 6px 3px #617b5540);
+
+  animation: sproutFloat 3s ease-in-out infinite;
+}
+
+/* the bobbing motion: moves up 8px at the halfway point, then back down */
+@keyframes sproutFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Small HydroSense header logo */
+.brand-symbol {
+  width: 78px;
+  height: 78px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* HydroSense music button */
+.music-toggle {
+  background: #e5edcf;
+  color: #49664a;
+  border: 2px solid #627c5a;
+  border-radius: 9px;
+  padding: 12px 15px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  box-shadow: 3px 3px 0 #a6b697;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s;
+}
+
+.music-toggle:hover {
+  background: #d4e6b8;
+  transform: translateY(-2px);
+}
+
+.music-toggle[aria-pressed="true"] {
+  background: #c5dda9;
+}
+
+@media (max-width: 760px) {
+  .music-toggle {
+    font-size: 8px;
+    padding: 10px;
+  }
+}
