@@ -1,3 +1,5 @@
+import Settings from './Settings.jsx';
+import { TEMPERATURE_KEY, isTemperatureUnit, readTemperatureUnit, displayTemperature } from './temperature.js';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Bluetooth,
@@ -202,7 +204,7 @@ function Sprout({ mood = 'happy', size = 'large' }) {
 }
 
 // Line chart of recent values (temperature history)
-function Trend({ values }) {
+function Trend({ values, unit }) {
   const vals = values.filter((v) => Number.isFinite(v));
 
   if (vals.length < 2) {
@@ -230,7 +232,7 @@ function Trend({ values }) {
       viewBox="0 0 640 150"
       preserveAspectRatio="none"
       role="img"
-      aria-label="Recent temperature trend"
+      aria-label={`Recent temperature trend in °${unit}`}
     >
       {/* Gradient used for the area fill under the line */}
       <defs>
@@ -242,7 +244,7 @@ function Trend({ values }) {
 
       {/* Dashed horizontal grid lines */}
       {[25, 58, 91, 124].map((y) => (
-        <line key={y} x1="0" x2="640" y1={y} y2={y} stroke="#dcd8c4" strokeDasharray="4 7" />
+        <line key={y} x1="0" x2="640" y1={y} y2={y} stroke="var(--color-dcd8c4)" strokeDasharray="4 7" />
       ))}
 
       {/* Filled area under the line */}
@@ -252,7 +254,7 @@ function Trend({ values }) {
       <path
         d={line}
         fill="none"
-        stroke="#50734e"
+        stroke="var(--color-50734e)"
         strokeWidth="4"
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -261,7 +263,7 @@ function Trend({ values }) {
 
       {/* A dot at each data point */}
       {p.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r="4" fill="#50734e" stroke="#fff7de" strokeWidth="1.8" />
+        <circle key={i} cx={x} cy={y} r="4" fill="var(--color-50734e)" stroke="var(--color-fff7de)" strokeWidth="1.8" />
       ))}
     </svg>
   );
@@ -388,6 +390,24 @@ function BackgroundMusic() {
 
 export default function App() {
   /* ---------- State ---------- */
+  const [temperatureUnit, setTemperatureUnit] = useState(readTemperatureUnit);
+  const temperatureLabel = `°${temperatureUnit}`;
+
+  function selectTemperatureUnit(next) {
+    if (!isTemperatureUnit(next)) return;
+    setTemperatureUnit(next);
+    try { localStorage.setItem(TEMPERATURE_KEY, next); } catch {}
+  }
+
+  useEffect(() => {
+    const onStorage = (event) => {
+      if (event.key === TEMPERATURE_KEY || event.key === null) {
+        setTemperatureUnit(readTemperatureUnit());
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
   const [mode, setMode] = useState('demo'); // 'demo' | 'ble' | 'api'
   const [reading, setReading] = useState(DEMO.at(-1)); // latest sensor reading
   const [history, setHistory] = useState(DEMO.map((x) => x.temperature)); // chart data
@@ -594,7 +614,7 @@ export default function App() {
         <div className="brand">
           <div className="brand-symbol">
             <img
-              src="/Hydrosense Logo.png"
+              src="/hydrosense-plant-cutout.png"
               alt="HydroSense logo"
               className="brand-logo-img"
             />
@@ -610,9 +630,7 @@ export default function App() {
         <div className="top-right">
           <BackgroundMusic />
           <span className="mini-tag">✦ FIELD GUIDE No. 001</span>
-          <span className="top-avatar">
-            <Leaf size={18} />
-          </span>
+          <Settings temperatureUnit={temperatureUnit} onTemperatureUnitChange={selectTemperatureUnit} />
         </div>
       </header>
 
@@ -769,8 +787,8 @@ export default function App() {
                 kind="temperature"
                 icon={Thermometer}
                 title="TEMPERATURE"
-                value={fmt(reading?.temperature, 1)}
-                unit="°C"
+                value={fmt(displayTemperature(reading?.temperature, 'C', temperatureUnit), 1)}
+                unit={temperatureLabel}
                 sub="Air temperature"
               />
               <Metric
@@ -785,8 +803,8 @@ export default function App() {
                 kind="feels"
                 icon={Sun}
                 title="FEELS LIKE"
-                value={fmt(reading?.heatIndexF, 1)}
-                unit="°F"
+                value={fmt(displayTemperature(reading?.heatIndexF, 'F', temperatureUnit), 1)}
+                unit={temperatureLabel}
                 sub="Calculated heat index"
               />
               <Metric
@@ -804,14 +822,14 @@ export default function App() {
               <div className="chart-top">
                 <div>
                   <div className="tiny-kicker">✦ FIELD OBSERVATIONS</div>
-                  <h3>Temperature journey</h3>
+                  <h3>Temperature journey ({temperatureLabel})</h3>
                 </div>
                 <span className="chart-chip">
                   <span className="chart-dot" /> RECENT READINGS
                 </span>
               </div>
 
-              <Trend values={history} />
+              <Trend values={history.map((value) => displayTemperature(value, 'C', temperatureUnit))} unit={temperatureUnit} />
 
               <div className="chart-bottom">
                 <span>EARLIER</span>

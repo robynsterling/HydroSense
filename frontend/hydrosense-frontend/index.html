@@ -4,10 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#e7dfc5" />
+    <!-- Apply the theme before styles or React paint, including when storage is blocked. -->
+    <script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('hydrosense-theme'); } catch {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#232b22' : '#e7dfc5';
+      })();
+    </script>
     <title>HYDROSENSE ✦ | Rooted in Data</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="icon" type="image/png" href="/Hydrosense Logo.png" />
+    <link rel="icon" type="image/png" href="/hydrosense-plant-logo.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap"
