@@ -25,7 +25,7 @@ const CHARACTERISTIC_UUID = 'beb5483e-36e1-4688-b7f5-ea07361b26a8';
 
 // Backend URL, configurable via Vite env vars (.env)
 const BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000').replace(/\/$/, '');
-const PATH = import.meta.env.VITE_READINGS_PATH || '/readings';
+const PATH = import.meta.env.VITE_READINGS_PATH || '/api/data';
 const API_URL = `${BASE}${PATH.startsWith('/') ? '' : '/'}${PATH}`;
 
 // Sample readings that loop in demo mode
@@ -55,9 +55,10 @@ function normalize(payload) {
     ? payload.at(-1)
     : (payload?.latest ?? payload?.reading ?? payload);
 
-  if (!d || typeof d !== 'object') throw new Error('Invalid API response');
+  if (!d || typeof d !== 'object') {
+    throw new Error('Invalid API response');
+  }
 
-  // Return the first key that holds a valid number, otherwise null
   const get = (...keys) => {
     for (const k of keys) {
       if (d[k] !== undefined && d[k] !== null && d[k] !== '') {
@@ -68,20 +69,41 @@ function normalize(payload) {
     return null;
   };
 
-  const c = get('temperature_c', 'tempC', 'temperature', 'temp');
-  const f = get('temperature_f', 'tempF');
+  // New backend "temp" is Fahrenheit.
+  // Other explicitly Celsius fields stay Celsius.
+  const tempC = get('temperature_c', 'tempC', 'temperature');
+  const tempF = get('temp', 'tempF', 'temperature_f');
+
+  const temperature =
+    tempC ?? (tempF === null ? null : (tempF - 32) * 5 / 9);
 
   const data = {
-    // Prefer Celsius; fall back to converting Fahrenheit
-    temperature: c ?? (f === null ? null : ((f - 32) * 5) / 9),
-    humidity: get('humidity', 'humidity_percent', 'relative_humidity'),
-    heatIndexF: get('heat_index_f', 'heatIndexF', 'heat_index', 'feels_like_f'),
-    soilMoisture: get('soil_moisture', 'soilMoisture', 'soil_percent', 'soilPercent', 'soil'),
+    temperature,
+    humidity: get(
+      'humidity',
+      'humidity_percent',
+      'relative_humidity'
+    ),
+    heatIndexF: get(
+      'feelsLike',
+      'heatIndexF',
+      'heat_index_f',
+      'heat_index',
+      'feels_like_f'
+    ),
+    soilMoisture: get(
+      'soil',
+      'soilMoisture',
+      'soil_moisture',
+      'soil_percent',
+      'soilPercent'
+    ),
   };
 
-  if (Object.values(data).every((x) => x === null)) {
+  if (Object.values(data).every(v => v === null)) {
     throw new Error('No recognized sensor fields');
   }
+
   return data;
 }
 
@@ -514,15 +536,30 @@ export default function App() {
         });
         if (!r.ok) throw new Error(`Backend returned HTTP ${r.status}`);
 
-        const next = normalize(await r.json());
-        if (active) accept(next);
-      } catch (err) {
-        if (active && err.name !== 'AbortError') {
-          setStatus('offline');
-          setError(err.message);
+        const payload = await r.json();
+
+        if (payload.status !== "Connected") {
+          if (active) {
+            setStatus("connecting");
+            setError(payload.status || "Waiting for ESP32...");
+            setReading(null);
+          }
+          return;
         }
-      }
-    };
+
+        const next = normalize(payload);
+
+        if (active) {
+          accept(next);
+        }
+        }catch(err) {
+          if (active && err.name !== 'AbortError') {
+            setStatus('offline');
+            setError(err.message);
+            setReading(null);
+          }
+        }
+      };
 
     setStatus('connecting');
     pull();
