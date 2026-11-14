@@ -26,7 +26,7 @@ const SERVICE_UUID = '4fafc201-1fb5-459e-8fcc-c5c9c331914b';
 const CHARACTERISTIC_UUID = 'beb5483e-36e1-4688-b7f5-ea07361b26a8';
 
 // Backend URL, configurable via Vite env vars (.env)
-const BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000').replace(/\/$/, '');
+const BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001').replace(/\/$/, '');
 const PATH = import.meta.env.VITE_READINGS_PATH || '/api/data';
 const API_URL = `${BASE}${PATH.startsWith('/') ? '' : '/'}${PATH}`;
 
