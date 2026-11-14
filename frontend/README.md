@@ -1,6 +1,76 @@
 # Hydrosense Real-Time Dashboard
+HydroSense uses React + Vite for the frontend, FastAPI for the backend, and an ESP32 to collect live sensor readings.
 
-A custom retro-like React website for the ESP32 with DHT11, capacitive soil sensor, OLED, and BLE.
+## Run on Windows in VS Code(Git Bash)
+
+1. Open the Project
+Open the HydroSense project folder in Visual Studio Code (or your preferred IDE).
+
+Select Terminal → New Terminal and choose Git Bash as the terminal profile.
+
+2. Connect the ESP32
+Connect the ESP32 to the laptop using a USB data cable.
+Open Arduino IDE and check Tools → Port to identify the correct COM port.
+In main.py, update the serial port if necessary:
+
+SERIAL_PORT = "COM6"
+BAUD_RATE = 115200
+
+COM6 is the port used during our testing. It may be different on another computer.
+
+Close the Arduino Serial Monitor before starting the API, since only one application can normally access the serial port at a time.
+
+3. Start the FastAPI Backend
+From the directory containing main.py, install the required Python packages (first-time setup only):
+
+python -m pip install fastapi uvicorn pyserial
+
+Start the API using:
+
+python -m uvicorn main:app --port 8001
+
+The backend should be accessible at:
+
+http://localhost:8001/api/data
+
+Open that URL in Chrome to verify that the API responds with JSON sensor data.
+
+A "status": "Connected" response indicates that the backend has received valid sensor readings from the ESP32.
+
+Note: If port 8001 is already in use, first check whether the API is already running at the URL above. Do not start a second instance unnecessarily.
+
+4. Start the React Frontend
+Open a second Git Bash terminal in VS Code.
+
+From the project root, run:
+cd frontend
+npm install
+npm run dev
+
+npm install is only required during initial setup or when dependencies change.
+
+Open the localhost URL displayed by Vite, typically:
+http://localhost:5173/
+
+5. Connect the Website to the API
+In the HydroSense dashboard, select API mode.
+
+The frontend is configured to request sensor readings from:
+
+http://localhost:8001/api/data
+
+Keep both terminal processes running while using the application.
+
+
+NB: Starting HydroSense on Future Sessions
+After the initial installation, the normal startup sequence is:
+1. Plug in the ESP32 and confirm its COM port.
+2. Open Git Bash in the folder containing main.py.
+3. Start FastAPI with python -m uvicorn main:app --port 8001.
+4. Open another terminal and run cd frontend && npm run dev.
+5. Open the website and select API mode.
+
+Important: The frontend and backend must use the same API port. If the configured port changes, update VITE_API_BASE_URL or the frontend’s fallback URL accordingly, then restart Vite.
 
 ## Run on Mac in VS Code
 
